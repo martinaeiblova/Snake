@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[appleIndex].classList.remove("apple");
         clearInterval(interval);
         score = 0;
-        //random Apple
+        randomApple
         direction = 1;
         scoreDisplay.innerText = score;
         intervalTime = 1000;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             squares[currentSnake[0]].classList.remove("apple");
             squares[tail].classList.add("snake");
             currentSnake.push(tail);
-            //randomApple
+            randomApple
             score++;
             scoreDisplay.textContent = score;
             clearInterval(interval);
@@ -61,6 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
             interval = setInterval(moveOutcomes, intervalTime);
         }
         squares[currentSnake[0]].classList.add("snake");
+    }
+
+    //generate new apple if apple is eaten
+    function randomApple() {
+        do {
+            appleIndex = Math.floor(Math.random() * squares.length);
+        } while (squares[appleIndex].classList.contains("snake"));
+        squares[appleIndex].classList.add("apple");
     }
 
     //assign functions to decodes
