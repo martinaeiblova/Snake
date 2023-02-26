@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const squares = document.querySelectorAll("grid div");
-    const scoreDisplay = document.querySelector("span");
-    const startBtn = document.querySelector("start");
+    const squares = document.querySelectorAll(".grid div");
+    const scoreDisplay = document.querySelector(".span");
+    const startBtn = document.querySelector(".start");
 
     const width = 10;
     let currentIndex = 0; //first div in our grid
@@ -44,24 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
             return clearInterval(interval);
         }
 
-        const tail = currentSnake.pop()
-        squares[tail].classList.remove("snake")
-        currentSnake.unshift(currentSnake[0] + direction)   //gives direction to the head of the array
+        const tail = currentSnake.pop();
+        squares[tail].classList.remove("snake");
+        currentSnake.unshift(currentSnake[0] + direction); //gives direction to the head of the array
 
         //snake getts apple
-        if(squares[currentSnake[0]].classList.contains("apple")) {
-            squares[currentSnake[0]].classList.remove("apple")
-            squares[tail].classList.add("snake")
-            currentSnake.push(tail)
+        if (squares[currentSnake[0]].classList.contains("apple")) {
+            squares[currentSnake[0]].classList.remove("apple");
+            squares[tail].classList.add("snake");
+            currentSnake.push(tail);
             //randomApple
-            score++
-            scoreDisplay.textContent = score
-            clearInterval(interval)
-            intervalTime = intervalTime + speed
-            interval = setInterval(moveOutcomes, intervalTime)
+            score++;
+            scoreDisplay.textContent = score;
+            clearInterval(interval);
+            intervalTime = intervalTime + speed;
+            interval = setInterval(moveOutcomes, intervalTime);
         }
-       squares[currentSnake[0]].classList.add("snake")
-
+        squares[currentSnake[0]].classList.add("snake");
     }
 
     //assign functions to decodes
@@ -83,4 +82,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     document.addEventListener("keyup", control);
+    startBtn.addEventListener("click", startGame);
 });
