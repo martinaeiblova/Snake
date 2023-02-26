@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         squares[appleIndex].classList.remove("apple");
         clearInterval(interval);
         score = 0;
-        randomApple;
+        randomApple();
         direction = 1;
         scoreDisplay.innerText = score;
         intervalTime = 1000;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             squares[currentSnake[0]].classList.remove("apple");
             squares[tail].classList.add("snake");
             currentSnake.push(tail);
-            randomApple;
+            randomApple();
             score++;
             scoreDisplay.textContent = score;
             clearInterval(interval);
@@ -76,17 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
         //squares[currentIndex].classList.remove("snake");
 
         if (e.key === "ArrowRight") {
-            direction = 1;
-            console.log("right arrow is working"); //if we press the right arrow on our keyboard, the snake will turn right
+            direction = 1;   //if we press the right arrow on our keyboard, the snake will turn right
         } else if (e.key === "ArrowUp") {
-            direction = -width;
-            console.log("up arrow is working"); // if we press the up arrow, the snake will go back 10 divs, appearing to go up
+            direction = -width;   // if we press the up arrow, the snake will go back 10 divs, appearing to go up
         } else if (e.key === "ArrowLeft") {
-            direction = -1;
-            console.log("left arrow is working"); // if we press left arrow, the snake will go left one div
+            direction = -1;   // if we press left arrow, the snake will go left one div
         } else if (e.key === "ArrowDown") {
-            direction = +width;
-            console.log("down arrow is working"); // if we press down, the snake will appear ten divs from you are now
+            direction = +width;  // if we press down, the snake will appear ten divs from you are now
         }
     }
     document.addEventListener("keyup", control);
